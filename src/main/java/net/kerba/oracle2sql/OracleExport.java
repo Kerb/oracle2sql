@@ -8,6 +8,7 @@ package net.kerba.oracle2sql;
  */
 public class OracleExport {
     public static void main(String[] args) {
+        System.out.println("");
 
     }
 }
