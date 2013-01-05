@@ -1,5 +1,8 @@
 package net.kerba.oracle2sql;
 
+import net.kerba.oracle2sql.config.Configuration;
+import net.kerba.oracle2sql.config.DefaultConfiguration;
+
 /**
  * Created by IntelliJ IDEA.
  * User: kerb
@@ -8,7 +11,11 @@ package net.kerba.oracle2sql;
  */
 public class OracleExport {
     public static void main(String[] args) {
-        System.out.println("");
+        Configuration config = new DefaultConfiguration();
+
+        System.out.println("db: " + config.getParameter(Configuration.Param.CONNECT_DB).eval());
+        System.out.println("host: " + config.getParameter(Configuration.Param.CONNECT_HOST).eval());
+        System.out.println("filter column: " + config.getParameter(Configuration.Param.FILTER_COLUMN).eval());
 
     }
 }
