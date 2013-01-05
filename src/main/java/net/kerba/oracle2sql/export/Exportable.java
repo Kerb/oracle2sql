@@ -6,7 +6,8 @@ package net.kerba.oracle2sql.export;
  * Date: 05.01.13
  * Time: 15:11
  */
-public interface Exporter {
+public interface Exportable {
+
     public boolean isExportable();
 
     public String export();
