@@ -1,6 +1,6 @@
-package net.kerba.oracle2sql.export;
+package net.kerba.oracle2sql.export.table;
 
-import net.kerba.oracle2sql.config.Configuration;
+import net.kerba.oracle2sql.export.DatabaseObjectsProvider;
 import net.kerba.oracle2sql.expression.ElBooleanExpression;
 import net.kerba.oracle2sql.expression.Expression;
 import net.kerba.utils.Check;
@@ -20,7 +20,7 @@ import java.util.List;
  * Date: 06.01.13
  * Time: 20:22
  */
-public class Tables implements Exportable, DatabaseObjectsProvider {
+public class Tables implements DatabaseObjectsProvider {
     private Expression tableExportableExpression;
 
     private List<Table> tables;

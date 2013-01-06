@@ -1,5 +1,6 @@
-package net.kerba.oracle2sql.export;
+package net.kerba.oracle2sql.export.table;
 
+import net.kerba.oracle2sql.export.Exportable;
 import net.kerba.oracle2sql.expression.Expression;
 import net.kerba.utils.Check;
 

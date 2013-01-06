@@ -3,8 +3,8 @@ package net.kerba.oracle2sql;
 import net.kerba.oracle2sql.config.Configuration;
 import net.kerba.oracle2sql.config.DefaultConfiguration;
 import net.kerba.oracle2sql.export.DatabaseObjectsProvider;
-import net.kerba.oracle2sql.export.Tables;
-import net.kerba.oracle2sql.expression.ElBooleanExpression;
+import net.kerba.oracle2sql.export.table.Tables;
+import net.kerba.oracle2sql.export.view.Views;
 import oracle.jdbc.pool.OracleDataSource;
 
 import java.sql.SQLException;
@@ -28,14 +28,12 @@ public class OracleExport {
 
 //        objectTypesToExport.add(new Tables(new ElBooleanExpression("${not f:startsWith(object.name,'H#')}")));
         objectTypesToExport.add(new Tables(configFacade.getString(Configuration.Param.FILTER_TABLE)));
+        objectTypesToExport.add(new Views(configFacade.getString(Configuration.Param.FILTER_VIEW_NORMAL)));
 
 
         OracleDataSource ods = null;
         try {
             ods = new OracleDataSource();
-            ods.setUser("DOF_USER");
-            ods.setURL("jdbc:oracle:thin:@192.168.102.53:1521:DOFDB");
-            ods.setPassword("japan#2030");
 
 
             for(DatabaseObjectsProvider i : objectTypesToExport) {
