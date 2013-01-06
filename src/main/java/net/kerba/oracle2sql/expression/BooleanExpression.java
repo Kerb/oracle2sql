@@ -1,5 +1,7 @@
 package net.kerba.oracle2sql.expression;
 
+import java.util.Map;
+
 /**
  * Created by IntelliJ IDEA.
  * User: kerb
@@ -7,8 +9,14 @@ package net.kerba.oracle2sql.expression;
  * Time: 15:41
  */
 public class BooleanExpression implements Expression<Boolean> {
+    private boolean value;
+
+    public BooleanExpression(boolean value) {
+        this.value = value;
+    }
+
     @Override
-    public Boolean eval() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Boolean eval(Map contextValues) {
+        return value;
     }
 }

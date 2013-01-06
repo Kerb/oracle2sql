@@ -1,6 +1,6 @@
 package net.kerba.oracle2sql.config;
 
-import net.kerba.oracle2sql.expression.DummyExpression;
+import net.kerba.oracle2sql.expression.ConstantValueExpression;
 import net.kerba.oracle2sql.expression.Expression;
 
 import java.io.IOException;
@@ -26,6 +26,6 @@ public class DefaultConfiguration implements Configuration {
 
     @Override
     public Expression getParameter(Param param) {
-        return new DummyExpression(config.get(param.getKey()));
+        return new ConstantValueExpression(config.get(param.getKey()));
     }
 }

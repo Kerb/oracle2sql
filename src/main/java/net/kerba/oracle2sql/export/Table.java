@@ -1,5 +1,11 @@
 package net.kerba.oracle2sql.export;
 
+import net.kerba.oracle2sql.expression.Expression;
+import net.kerba.utils.Check;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by IntelliJ IDEA.
  * User: kerb
@@ -9,13 +15,23 @@ package net.kerba.oracle2sql.export;
 public class Table implements Exportable {
     private String tablename;
 
-    public Table(String tablename) {
+    private Expression<Boolean> tableExportableExpression;
+
+    public Table(String tablename,
+                 Expression<Boolean> tableExportable) {
+        Check.notNull(tablename, "tablename");
+        Check.notNull(tableExportable, "tableExportable");
+
         this.tablename = tablename;
+        this.tableExportableExpression = tableExportable;
     }
 
     @Override
     public boolean isExportable() {
-        return false;
+        Map<String,Object> tableProperties = new HashMap<String, Object>();
+        tableProperties.put("name", tablename);
+
+        return tableExportableExpression.eval(tableProperties);
     }
 
     @Override
@@ -25,6 +41,7 @@ public class Table implements Exportable {
 
     @Override
     public String toString() {
-        return tablename;
+        return String.format("Table '%s'",tablename);
     }
+
 }
