@@ -15,10 +15,10 @@ import java.util.Map;
 public class Table implements Exportable {
     private String tablename;
 
-    private Expression<Boolean> tableExportableExpression;
+    private Expression tableExportableExpression;
 
     public Table(String tablename,
-                 Expression<Boolean> tableExportable) {
+                 Expression tableExportable) {
         Check.notNull(tablename, "tablename");
         Check.notNull(tableExportable, "tableExportable");
 
@@ -31,7 +31,7 @@ public class Table implements Exportable {
         Map<String,Object> tableProperties = new HashMap<String, Object>();
         tableProperties.put("name", tablename);
 
-        return tableExportableExpression.eval(tableProperties);
+        return tableExportableExpression.eval(tableProperties,Boolean.class);
     }
 
     @Override

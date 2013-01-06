@@ -21,13 +21,18 @@ import java.util.List;
  * Time: 20:22
  */
 public class Tables implements Exportable, DatabaseObjectsProvider {
-    private Expression<Boolean> tableExportableExpression;
+    private Expression tableExportableExpression;
 
     private List<Table> tables;
 
-    public Tables(Expression<Boolean> tableExportableExpression) {
+    public Tables(Expression tableExportableExpression) {
         Check.notNull(tableExportableExpression, "tableExportableExpression");
         this.tableExportableExpression = tableExportableExpression;
+    }
+
+    public Tables(String expressionString) {
+        Check.notNull(expressionString,"expressionString");
+        this.tableExportableExpression = new ElBooleanExpression(expressionString);
     }
 
     @Override

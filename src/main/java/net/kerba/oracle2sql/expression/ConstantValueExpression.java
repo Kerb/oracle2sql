@@ -16,7 +16,7 @@ public class ConstantValueExpression implements Expression {
     }
 
     @Override
-    public Object eval(Map contextValues) {
-        return value;
+    public <T> T eval(Map contextValues, Class<T> desiredType) {
+        return (T)value;
     }
 }

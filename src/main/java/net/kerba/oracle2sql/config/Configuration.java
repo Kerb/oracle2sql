@@ -50,4 +50,11 @@ public interface Configuration {
 
     public Expression getParameter(Param param);
 
+    public interface Facade {
+        public boolean getBoolean(Param param);
+
+        public String getString(Param param);
+
+    }
+
 }

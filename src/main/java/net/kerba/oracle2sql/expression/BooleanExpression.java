@@ -8,15 +8,15 @@ import java.util.Map;
  * Date: 05.01.13
  * Time: 15:41
  */
-public class BooleanExpression implements Expression<Boolean> {
-    private boolean value;
+public class BooleanExpression implements Expression {
+    private Boolean value;
 
     public BooleanExpression(boolean value) {
         this.value = value;
     }
 
     @Override
-    public Boolean eval(Map contextValues) {
-        return value;
+    public <T> T eval(Map contextValues, Class<T> desiredType) {
+        return (T)value;
     }
 }
